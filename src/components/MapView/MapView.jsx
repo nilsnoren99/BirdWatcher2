@@ -32,7 +32,7 @@ export default function MapView() {
 
 
  return (
-  <div className="m-5" id="map">
+  <div className="w" id="map">
      {!position ? (
         <LoadingSpinner />
       ) : (

@@ -1,0 +1,32 @@
+.mapview-overlay-container {
+  position: relative;
+  margin: 0; 
+  padding: 0;
+  
+}
+
+
+.planelist-overlay {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  z-index: 1000;
+  background: #ffff;
+  box-shadow: 0 4px 10px #000000;
+
+}
+
+@media only screen and (max-width: 900px) {
+  .mapview-overlay-container {
+    position: static;
+  }
+
+  .planelist-overlay {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+    
+    max-width: 100%;
+    box-shadow: none;
+  }
+}
