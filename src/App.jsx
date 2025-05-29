@@ -8,10 +8,6 @@ import Hero from './components/Hero/Hero';
 import PlaneList from './components/PlaneList';
 import FRTest from './components/FRTest';
 
-
-
-
-
 export default function App() {
     return (
         <div>

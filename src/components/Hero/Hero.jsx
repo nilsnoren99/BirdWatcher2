@@ -4,7 +4,6 @@ import logoImg from '../../assets/logo.png';
 import './Hero.css'
 
 
-
 export default function Hero() {
   return (
     <div className="bg-dark text-light py-5">

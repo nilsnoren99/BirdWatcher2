@@ -19,7 +19,6 @@ export default function MapView() {
             maximumAge: 0,
         };
 
-
     navigator.geolocation.getCurrentPosition(
       (posData) => {
         const coords = posData.coords;
@@ -30,14 +29,12 @@ export default function MapView() {
         setPosition([60.1282, 18.6435]);
       },
       options
-      
-
     );
   }, []);
 
   if (!position) return <LoadingSpinner />;
 
-
+  
   const fillBlueOptions = { fillColor: 'blue' }
 
   return (
@@ -59,7 +56,6 @@ export default function MapView() {
           </Popup>
         </Marker>
 
-
         {planes.map((plane) => (
           <Marker
             key={plane.id}
@@ -78,7 +74,6 @@ export default function MapView() {
             </Popup>
           </Marker>
         ))}
-
 
       </MapContainer>
     </div>

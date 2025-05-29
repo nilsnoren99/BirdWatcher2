@@ -10,7 +10,6 @@ export default function Footer() {
            <p>© 2025 BirdWatcher2 </p>
           </div>
           
-          
           <div className="col-md-6 text-center text-md-end">
          
             <a href="#" className="text-light me-3 text-decoration-none">Privacy Policy</a>
