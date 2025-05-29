@@ -2,6 +2,6 @@ import React from 'react';
 
 export default function FRTest() {
     return (
-        <h1>AHDSAJD</h1>
+        <h1>Test</h1>
     );
 }
