@@ -8,8 +8,8 @@ export default function useOpenSkyData() {
     // Denna funktion är för att hämta data från opensky
     async function getPlanes() {
       try {
-        const response = await fetch('https://opensky-network.org/api/states/all?lamin=54.3&lamax=72&lomin=5&lomax=32');
-        const result = await response.json();
+       // const response = await fetch('https://opensky-network.org/api/states/all?lamin=54.3&lamax=72&lomin=5&lomax=32');
+       // const result = await response.json();
         
         // Hämtar den information som vi vill ha från varje plan
         const planeData = result.states.map(index => ({

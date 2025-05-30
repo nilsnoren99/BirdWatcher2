@@ -13,13 +13,12 @@ export default function MapView() {
   const planes = useOpenSkyData();
 
   useEffect(() => {
-  
     let options = {
             enableHighAccuracy: true,
             maximumAge: 0,
         };
 
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.getCurrentPosition( // getCurrentPosition kan bytas ut till watchPosition. Beror lite på vad vi känner för. 
       (posData) => {
         const coords = posData.coords;
         setPosition([coords.latitude, coords.longitude]);
@@ -46,7 +45,7 @@ export default function MapView() {
         />
 
         // Ändra så cirkeln är currentposition också!!!
-        <Circle center={[55.6050, 13.0038]} pathOptions={fillBlueOptions} radius={20000} />
+        <Circle center={position} pathOptions={fillBlueOptions} radius={20000} />
 
         <Marker 
           position={position}
