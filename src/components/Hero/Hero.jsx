@@ -1,5 +1,5 @@
 import React from 'react';
-import airplaneImg from '../../assets/plane-fire.png';
+import airplaneImg from '../../assets/birdy.png';
 import logoImg from '../../assets/logo.png';
 import './Hero.css'
 

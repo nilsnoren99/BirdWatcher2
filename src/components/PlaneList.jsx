@@ -5,9 +5,9 @@ export default function PlaneList({planes}) {
     return <div className="p-2">Inga flygplan nära dig</div>;
   }
   return (
-    <ul className="list-group list-group-flush p-2">
+    <ul className="list-group list-group-flush p-2 bg-dark">
       {planes.map((plane) => (
-        <li key={plane.id} className="list-group-item">
+        <li key={plane.id} className="list-group-item bg-dark text-warning">
           {plane.callsign} - {plane.originCountry}
         </li>
       ))}

@@ -1,69 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import './MapView.css';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import LoadingSpinner from '../LoadingSpinner';
 import useOpenSkyData from '../../hooks/useOpenSkyData';
+import useUserLocation from '../../hooks/useUserLocation';
+import { isInsideCircle } from '../../utils/DistanceCalculator';
+import usePlanesNearby from '../../hooks/usePlanesNearby';
 
-const radiusKm = 20;
+const radiusKm = 40;
 const radiusDegree = radiusKm / 111 // Detta representerar ungefär 20km på kartan  |  dubbelkolla om detta strular
 
-function isInsideCircle(x, y, cx, cy, radius) {
-  const distance = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
-  return distance < radius;
-}
+
 
 export default function MapView({setPlanesNearby}) {
-  const [position, setPosition] = useState(null);
+  const position = useUserLocation();
   const planes = useOpenSkyData();
   
-  useEffect(() => {
-    let options = {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-        };
 
-    navigator.geolocation.getCurrentPosition( // getCurrentPosition kan bytas ut till watchPosition. Beror lite på vad vi känner för. 
-      (posData) => {
-        const coords = posData.coords;
-        setPosition([coords.latitude, coords.longitude]);
-      },
-      (err) => {
-        console.log("Geo error", err.message);
-        setPosition([60.1282, 18.6435]);
-      },
-      options
-    );
-  }, []);
-
-  useEffect(() => {
-    if (!position || planes.length == 0) return;
-
-    const userLatitude = position[0];
-    const userLongitude = position[1];
-
-    planes.forEach((plane) => {
-      if (!plane.lat || !plane.lon) return;
-
-      const inside = isInsideCircle(plane.lon, plane.lat, userLongitude, userLatitude, radiusDegree);
-
-      if (inside) {
-        setPlanesNearby((previousPlanes) => {
-          const alreadyExists = previousPlanes.some(existingPlane => existingPlane.id == plane.id);
-          if (alreadyExists) return previousPlanes;
-
-          const updated = previousPlanes.slice();
-          updated.unshift(plane);
-
-          if (updated.length > 10) {
-            updated.pop();
-          }
-          return updated;
-        })
-      }
-    })
-  }, [planes, position]);
+  usePlanesNearby(planes, position, setPlanesNearby, radiusDegree);
 
   if (!position) return <LoadingSpinner />;
 
