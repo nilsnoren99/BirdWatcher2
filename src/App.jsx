@@ -19,9 +19,9 @@ export default function App() {
                     <>
                         <Hero />
                         <div className="mapview-overlay-container">
-                        <MapView />
+                        <MapView setPlanesNearby={setPlanesNearby} />
                         <div className="planelist-overlay">
-                            <PlaneList />
+                            <PlaneList planes={planesNearby} />
                         </div>
                         </div>
                     </>

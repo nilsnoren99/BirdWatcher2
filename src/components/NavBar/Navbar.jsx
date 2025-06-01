@@ -17,10 +17,10 @@ export default function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="/">Home</a>
+                            <a className="nav-link fort-title" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/about">About</a>
+                            <a className="nav-link fort-title" href="/about">About</a>
                         </li>
                     </ul>
                 </div>

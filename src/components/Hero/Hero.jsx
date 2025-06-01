@@ -13,7 +13,7 @@ export default function Hero() {
             <img src={airplaneImg} alt="Airplane" className="hero-airplane-img" />
           </div>
           <div className="col-lg-6">
-            <h1 className="display-2 fw-bold">
+            <h1 className="display-2 fw-bold fort-title">
               It's a bird, it's a plane, no it's... <span class="" id="spanText" >BirdWatcher2</span>
             </h1>
             <p className="lead py-4">

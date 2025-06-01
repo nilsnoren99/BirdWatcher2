@@ -96,8 +96,8 @@ export default function MapView({setPlanesNearby}) {
             key={plane.id}
             position={[plane.lat, plane.lon]}
             icon={L.icon({
-              iconUrl: "https://www.svgrepo.com/show/150998/airplane-outline.svg",
-              iconSize: [15, 15],
+              iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Airplane_silhouette_purple.svg/1024px-Airplane_silhouette_purple.svg.png",
+              iconSize: [30, 30],
             })}
           >
             <Popup>
