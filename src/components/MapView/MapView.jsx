@@ -1,16 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
-
 import './MapView.css';
-
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import LoadingSpinner from '../LoadingSpinner';
 import useOpenSkyData from '../../hooks/useOpenSkyData';
 
+
+
+const radiusKm = 20;
+const radiusDegree = radiusKm / 111 // Detta representerar ungefär 20km på kartan
+
+
+function isInsideCircle(x, y, cx, cy, radius) {
+  const distance = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+  return distance < radius;
+}
+
 export default function MapView() {
   const [position, setPosition] = useState(null);
   const planes = useOpenSkyData();
+  
+
+  let userLat = null;
+  let userLon = null;
+
+  if (position) {
+    userLat = position[0];
+    userLon = position[1];
+  }
+
+  let planesNearby = [];
+
+  if (position && planes.length > 0) {
+    planes.forEach((plane) => {
+      if (!plane.lat || !plane.lon) return;
+
+
+      const inside = isInsideCircle(plane.lon, plane.lat, userLon, userLat, radiusDegree);
+      if (inside) {
+        planesNearby.push(plane);
+      }
+    });
+  } 
+
+  useEffect(() => {
+    if (planesNearby.length > 0) {
+      console.log("Planes nearby = ", planesNearby);
+    }
+  }, [planes]);
+
 
   useEffect(() => {
     let options = {
@@ -33,26 +72,28 @@ export default function MapView() {
 
   if (!position) return <LoadingSpinner />;
 
-  
-  const fillBlueOptions = { fillColor: 'blue' }
+  const fillBlueOptions = { fillColor: 'blue' };
+  const radiusMeter = 20000
 
   return (
     <div className="w" id="map">
-      <MapContainer className="map-container" center={position} zoom={12} scrollWheelZoom={false}>
+      <MapContainer className="map-container" center={position} zoom={10} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        // Ändra så cirkeln är currentposition också!!!
-        <Circle center={position} pathOptions={fillBlueOptions} radius={20000} />
+        <Circle center={position} pathOptions={fillBlueOptions} radius={radiusMeter} />
 
-        <Marker 
-          position={position}
-          >
-          <Popup>
-            Din plats
-          </Popup>
+        <Marker position={position}
+        icon={L.icon({
+              iconUrl: "https://www.svgrepo.com/show/283135/maps-and-flags-pin.svg",
+              iconSize: [35, 35],
+             
+            })}
+
+        >
+          <Popup>Din plats</Popup>
         </Marker>
 
         {planes.map((plane) => (
@@ -62,7 +103,6 @@ export default function MapView() {
             icon={L.icon({
               iconUrl: "https://www.svgrepo.com/show/150998/airplane-outline.svg",
               iconSize: [30, 30],
-          
             })}
           >
             <Popup>
