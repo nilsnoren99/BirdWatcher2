@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
+  
     <footer className="bg-dark text-light py-4 mt-auto border-top">
       <div className="container">
         <div className="row align-items-center">
@@ -20,4 +21,3 @@ export default function Footer() {
     </footer>
   );
 }
-

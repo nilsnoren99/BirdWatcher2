@@ -2,7 +2,6 @@
   position: relative;
   margin: 0; 
   padding: 0;
-  
 }
 
 .planelist-overlay {
@@ -12,7 +11,6 @@
   z-index: 1000;
   background: #ffff;
   box-shadow: 0 4px 10px #000000;
-
 }
 
 @media only screen and (max-width: 900px) {
@@ -24,7 +22,6 @@
     position: static;
     margin-top: 5%;
     width: 100%;
-    
     max-width: 100%;
     box-shadow: none;
   }
