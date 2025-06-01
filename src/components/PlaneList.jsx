@@ -1,16 +1,16 @@
 import React from 'react';
 
-export default function PlaneList() {
+export default function PlaneList({planes}) {
+  if (planes.length == 0) {
+    return <div className="p-2">Inga flygplan nära dig</div>;
+  }
   return (
-
-    <ul class="list-group list-group-flush p-2">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
+    <ul className="list-group list-group-flush p-2">
+      {planes.map((plane) => (
+        <li key={plane.id} className="list-group-item">
+          {plane.callsign} - {plane.originCountry}
+        </li>
+      ))}
     </ul>
-
-  );
+  )
 }
-

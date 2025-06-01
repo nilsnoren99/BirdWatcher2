@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from './components/Navbar/Navbar';
 import MapView from './components/MapView/MapView';
 import Footer from './components/Footer';
@@ -9,9 +9,8 @@ import PlaneList from './components/PlaneList';
 import About from './components/About/About';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
-
 export default function App() {
+    const [planesNearby, setPlanesNearby] = useState([]);
     return (
         <Router>
             <Navbar />

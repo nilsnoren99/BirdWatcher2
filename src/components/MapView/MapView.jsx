@@ -6,51 +6,18 @@ import L from 'leaflet';
 import LoadingSpinner from '../LoadingSpinner';
 import useOpenSkyData from '../../hooks/useOpenSkyData';
 
-
-
 const radiusKm = 20;
-const radiusDegree = radiusKm / 111 // Detta representerar ungefär 20km på kartan
-
+const radiusDegree = radiusKm / 111 // Detta representerar ungefär 20km på kartan  |  dubbelkolla om detta strular
 
 function isInsideCircle(x, y, cx, cy, radius) {
   const distance = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
   return distance < radius;
 }
 
-export default function MapView() {
+export default function MapView({setPlanesNearby}) {
   const [position, setPosition] = useState(null);
   const planes = useOpenSkyData();
   
-
-  let userLat = null;
-  let userLon = null;
-
-  if (position) {
-    userLat = position[0];
-    userLon = position[1];
-  }
-
-  let planesNearby = [];
-
-  if (position && planes.length > 0) {
-    planes.forEach((plane) => {
-      if (!plane.lat || !plane.lon) return;
-
-
-      const inside = isInsideCircle(plane.lon, plane.lat, userLon, userLat, radiusDegree);
-      if (inside) {
-        planesNearby.push(plane);
-      }
-    });
-  } 
-
-  useEffect(() => {
-    if (planesNearby.length > 0) {
-      console.log("Planes nearby = ", planesNearby);
-    }
-  }, [planes]);
-
-
   useEffect(() => {
     let options = {
             enableHighAccuracy: true,
@@ -70,10 +37,38 @@ export default function MapView() {
     );
   }, []);
 
+  useEffect(() => {
+    if (!position || planes.length == 0) return;
+
+    const userLatitude = position[0];
+    const userLongitude = position[1];
+
+    planes.forEach((plane) => {
+      if (!plane.lat || !plane.lon) return;
+
+      const inside = isInsideCircle(plane.lon, plane.lat, userLongitude, userLatitude, radiusDegree);
+
+      if (inside) {
+        setPlanesNearby((previousPlanes) => {
+          const alreadyExists = previousPlanes.some(existingPlane => existingPlane.id == plane.id);
+          if (alreadyExists) return previousPlanes;
+
+          const updated = previousPlanes.slice();
+          updated.unshift(plane);
+
+          if (updated.length > 10) {
+            updated.pop();
+          }
+          return updated;
+        })
+      }
+    })
+  }, [planes, position]);
+
   if (!position) return <LoadingSpinner />;
 
   const fillBlueOptions = { fillColor: 'blue' };
-  const radiusMeter = 20000
+  const radiusMeter = 17000
 
   return (
     <div className="w" id="map">
@@ -89,7 +84,7 @@ export default function MapView() {
         icon={L.icon({
               iconUrl: "https://www.svgrepo.com/show/283135/maps-and-flags-pin.svg",
               iconSize: [35, 35],
-             
+            
             })}
 
         >
@@ -102,7 +97,7 @@ export default function MapView() {
             position={[plane.lat, plane.lon]}
             icon={L.icon({
               iconUrl: "https://www.svgrepo.com/show/150998/airplane-outline.svg",
-              iconSize: [30, 30],
+              iconSize: [15, 15],
             })}
           >
             <Popup>
