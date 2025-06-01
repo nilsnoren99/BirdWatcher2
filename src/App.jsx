@@ -6,7 +6,6 @@ import MapView from './components/MapView/MapView';
 import Footer from './components/Footer';
 import Hero from './components/Hero/Hero';
 import PlaneList from './components/PlaneList';
-import FRTest from './components/FRTest';
 
 export default function App() {
     const [planesNearby, setPlanesNearby] = useState([]);
@@ -20,8 +19,6 @@ export default function App() {
                     <PlaneList planes={planesNearby} />
                 </div>
             </div>
-
-            <FRTest />
 
             <Footer />
         </div>
