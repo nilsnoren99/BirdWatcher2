@@ -13,11 +13,13 @@ export default function Hero() {
             <img src={airplaneImg} alt="Airplane" className="hero-airplane-img" />
           </div>
           <div className="col-lg-6">
-            <img src={logoImg} alt="Logo" className="hero-logo-img" />
-            <p className="lead">
+            <h1 className="display-2 fw-bold">
+              It's a bird, it's a plane, no it's... <span class="" id="spanText" >BirdWatcher2</span>
+            </h1>
+            <p className="lead py-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi, et eos saepe, ipsam aspernatur expedita a rerum consequuntur harum doloremque molestias dolore, distinctio dolorem esse accusamus dignissimos modi sunt.
             </p>
-            <button type="button"  className="btn btn-success btn-lg px-4 md-2 rounded-pill">Get Started</button>
+            <button type="button" onclick className="btn btn-success btn-lg px-4 md-2 rounded-pill">Get Started</button>
           </div>
         </div>
       </div>

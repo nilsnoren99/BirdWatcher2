@@ -11,3 +11,10 @@
   display: block;
   margin-bottom: 5%;
 }
+
+#spanText {
+  text-decoration: underline;
+  color: #654AAF;
+  font-size: 125%;
+  
+}
