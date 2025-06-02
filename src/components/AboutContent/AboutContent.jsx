@@ -1,9 +1,9 @@
 import React from 'react';
 import logoImg from '../../assets/logo.png';
 
-import './About.css'; // kanske ta bort denna importen om den inte behövs
+import './AboutContent.css'; // kanske ta bort denna importen om den inte behövs
 
-export default function About() {
+export default function AboutContent() {
     return (
         <div className="text-dark py-5 bg-dark">
             <div className="container text-light">

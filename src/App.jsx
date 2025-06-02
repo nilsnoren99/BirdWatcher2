@@ -1,41 +1,32 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import React, {useState, useEffect} from 'react';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './layouts/NavBar/Navbar';
 import MapView from './components/MapView/MapView';
-import Footer from './components/Footer';
+import Footer from './layouts/Footer';
 import Hero from './components/Hero/Hero';
 import PlaneList from './components/PlaneList';
-import About from './components/About/About';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import useLocalStorage from './hooks/useLocalStorage';
 
 
-
+import Home from './pages/Home';
+import About from './pages/About';
 
 export default function App() {
-    
-const [planesNearby, setPlanesNearby] = useLocalStorage();
+    const [planesNearby, setPlanesNearby] = useLocalStorage();
 
     return (
         <Router>
             <Navbar />
             <Routes>
                 <Route path="/" element={
-                    <>
-                        <Hero />
-                        <div className="mapview-overlay-container">
-                        <MapView setPlanesNearby={setPlanesNearby} />
-                        <div className="planelist-overlay">
-                            <PlaneList planes={planesNearby} />
-                        </div>
-                        </div>
-                    </>
+                    <Home setPlanesNearby={setPlanesNearby} planesNearby={planesNearby} />
                 } />
-                <Route path="/About" element={<About />} />
+                <Route path="/about" element={<About />} />
             </Routes>
             <Footer />
-
-        </Router >
+        </Router>
     );
 }

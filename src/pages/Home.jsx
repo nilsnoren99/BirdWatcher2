@@ -1,0 +1,18 @@
+import React from 'react';
+import Hero from '../components/Hero/Hero';
+import MapView from '../components/MapView/MapView';
+import PlaneList from '../components/PlaneList';
+
+export default function Home({ setPlanesNearby, planesNearby }) {
+  return (
+    <>
+      <Hero />
+      <div className="mapview-overlay-container">
+        <MapView setPlanesNearby={setPlanesNearby} />
+        <div className="planelist-overlay">
+          <PlaneList planes={planesNearby} />
+        </div>
+      </div>
+    </>
+  );
+}

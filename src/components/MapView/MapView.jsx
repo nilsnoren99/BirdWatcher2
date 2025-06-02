@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import './MapView.css';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import LoadingSpinner from '../LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import useOpenSkyData from '../../hooks/useOpenSkyData';
 import useUserLocation from '../../hooks/useUserLocation';
 import { isInsideCircle } from '../../utils/DistanceCalculator';
