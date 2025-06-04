@@ -1,79 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import './MapView.css';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import LoadingSpinner from '../LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import useOpenSkyData from '../../hooks/useOpenSkyData';
+import useUserLocation from '../../hooks/useUserLocation';
+import { isInsideCircle } from '../../utils/DistanceCalculator';
+import usePlanesNearby from '../../hooks/usePlanesNearby';
+
+const radiusKm = 40;
+const radiusDegree = radiusKm / 111 // Detta representerar ungefär 20km på kartan  |  dubbelkolla om detta strular
 
 
 
-const radiusKm = 20;
-const radiusDegree = radiusKm / 111 // Detta representerar ungefär 20km på kartan
-
-
-function isInsideCircle(x, y, cx, cy, radius) {
-  const distance = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
-  return distance < radius;
-}
-
-export default function MapView() {
-  const [position, setPosition] = useState(null);
+export default function MapView({setPlanesNearby}) {
+  const position = useUserLocation();
   const planes = useOpenSkyData();
   
 
-  let userLat = null;
-  let userLon = null;
-
-  if (position) {
-    userLat = position[0];
-    userLon = position[1];
-  }
-
-  let planesNearby = [];
-
-  if (position && planes.length > 0) {
-    planes.forEach((plane) => {
-      if (!plane.lat || !plane.lon) return;
-
-
-      const inside = isInsideCircle(plane.lon, plane.lat, userLon, userLat, radiusDegree);
-      if (inside) {
-        planesNearby.push(plane);
-      }
-    });
-  } 
-
-  useEffect(() => {
-    if (planesNearby.length > 0) {
-      console.log("Planes nearby = ", planesNearby);
-    }
-  }, [planes]);
-
-
-  useEffect(() => {
-    let options = {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-        };
-
-    navigator.geolocation.getCurrentPosition( // getCurrentPosition kan bytas ut till watchPosition. Beror lite på vad vi känner för. 
-      (posData) => {
-        const coords = posData.coords;
-        setPosition([coords.latitude, coords.longitude]);
-      },
-      (err) => {
-        console.log("Geo error", err.message);
-        setPosition([60.1282, 18.6435]);
-      },
-      options
-    );
-  }, []);
+  usePlanesNearby(planes, position, setPlanesNearby, radiusDegree);
 
   if (!position) return <LoadingSpinner />;
 
   const fillBlueOptions = { fillColor: 'blue' };
-  const radiusMeter = 20000
+  const radiusMeter = 17000
 
   return (
     <div className="w" id="map">
@@ -89,7 +40,7 @@ export default function MapView() {
         icon={L.icon({
               iconUrl: "https://www.svgrepo.com/show/283135/maps-and-flags-pin.svg",
               iconSize: [35, 35],
-             
+            
             })}
 
         >
@@ -101,7 +52,7 @@ export default function MapView() {
             key={plane.id}
             position={[plane.lat, plane.lon]}
             icon={L.icon({
-              iconUrl: "https://www.svgrepo.com/show/150998/airplane-outline.svg",
+              iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Airplane_silhouette_purple.svg/1024px-Airplane_silhouette_purple.svg.png",
               iconSize: [30, 30],
             })}
           >
