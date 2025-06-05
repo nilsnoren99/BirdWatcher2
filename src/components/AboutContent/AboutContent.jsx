@@ -1,7 +1,9 @@
 import React from 'react';
 import logoImg from '../../assets/logo.png';
-
 import './AboutContent.css';
+
+
+//Komponenten för att visa texten om vårt projekt på sidan "About"
 
 export default function AboutContent() {
     return (

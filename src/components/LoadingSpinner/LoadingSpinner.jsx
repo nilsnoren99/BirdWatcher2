@@ -1,6 +1,8 @@
 import React from 'react';
 import './LoadingSpinner.css';
 
+//Spinner som används för att snurra på sidan (Visas istället för kartan innan användarens geolocation är hämtad)
+
 export default function LoadingSpinner() {
     return (
         <div className="spinner-container">
@@ -11,4 +13,3 @@ export default function LoadingSpinner() {
     );
 }
 
-// test test

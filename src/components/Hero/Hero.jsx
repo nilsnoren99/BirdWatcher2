@@ -3,6 +3,7 @@ import airplaneImg from '../../assets/birdy.png';
 import logoImg from '../../assets/logo.png';
 import './Hero.css'
 
+//Hero/Header-sektionen på sidan
 
 export default function Hero() {
   return (
@@ -17,9 +18,11 @@ export default function Hero() {
               It's a bird, it's a plane, no it's... <span class="" id="spanText" >BirdWatcher2</span>
             </h1>
             <p className="lead py-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi, et eos saepe, ipsam aspernatur expedita a rerum consequuntur harum doloremque molestias dolore, distinctio dolorem esse accusamus dignissimos modi sunt.
+            <strong>
+            Upptäck flygplan runt dig med BirdWatcher2. En smidig och rolig webbapp som visar vilka plan som passerar över dig i realtid. Allt du behöver göra är att gå ner till kartan så ser du direkt flyg inom 20 km Ett nytt sätt att utforska himlen och följa flyg precis där du är.
+            </strong>
             </p>
-            <button type="button" onclick className="btn btn-success btn-lg px-4 md-2 rounded-pill">Get Started</button>
+           
           </div>
         </div>
       </div>

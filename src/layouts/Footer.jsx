@@ -1,5 +1,7 @@
 import React from 'react';
 
+//Footer-komponent
+
 export default function Footer() {
   return (
   

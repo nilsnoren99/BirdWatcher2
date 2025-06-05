@@ -3,6 +3,8 @@ import Hero from '../components/Hero/Hero';
 import MapView from '../components/MapView/MapView';
 import PlaneList from '../components/PlaneList';
 
+//Home.jsx, för att hämta endast delar för huvudsidan och inte about.jsx
+
 export default function Home({ setPlanesNearby, planesNearby }) {
   return (
     <>
