@@ -63,9 +63,16 @@ Eftersom vi är bekväma med Reacts struktur, kändes det naturligt att bygga gr
 
 React har också en stor och aktiv community. Detta gör det enkelt att hitta hjälp och lösningar i dokumentation, olika forum & YouTube-videos. Det är dessutom ett av de mest använda frontend-ramverken i arbetslivet idag, vilket gör det extra relevant att ha erfarenhet av.
 
-Vi är medvetna om att Vue hade kunnat fungera minst lika bra för ett mindre projekt som vårt, särskilt eftersom Vue också är nybörjarvänligt. I efterhand hade det kanske varit intressant att testa det. Varför vi uteslöt Angular direkt från början var genom en snabb googling då ingen av oss hade tidigare arbetat med det. Vi fick då snabbt reda på att Angular till mestadels är till för lite större och mer skalbara projekt. Enligt vår uppfattning hade det varit ett bättre alternativ för “företagsprojekt”, alltså inte passande för oss. Utöver detta använder Angular TypeScript som standard, och detta gjorde det ännu mer uppenbart att det inte var något som passade för vårt projekt.
+Vi är medvetna om att Vue hade kunnat fungera minst lika bra för ett mindre projekt som vårt, särskilt eftersom Vue också är nybörjarvänligt. I efterhand hade det kanske varit intressant att testa det. Varför vi uteslöt Angular direkt från början var genom en snabb googling då ingen av oss hade tidigare arbetat med det. Vi fick då snabbt reda på att Angular till mestadels är till för lite större och mer skalbara projekt. Enligt vår uppfattning hade det varit ett bättre alternativ för “företagsprojekt”, alltså inte passande för oss och vårt projekt.
 
 I slutändan blev valet React tack vare våra tidigare erfarenheter, bra tillgång till resurser och dess relevans på arbetsmarknaden.
+
+
+https://www.browserstack.com/guide/angular-vs-react-vs-vue
+https://medium.com/@learnwithakshay/react-vs-angular-vs-vue-js-what-to-choose-in-2024-87bf9ed38a80
+https://www.w3schools.com/react/react_intro.asp
+https://www.w3schools.com/vue/
+https://www.geeksforgeeks.org/angular-js/angular-tutorial/
 
 --- 
 
