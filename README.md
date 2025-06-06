@@ -68,11 +68,11 @@ Vi är medvetna om att Vue hade kunnat fungera minst lika bra för ett mindre pr
 I slutändan blev valet React tack vare våra tidigare erfarenheter, bra tillgång till resurser och dess relevans på arbetsmarknaden.
 
 
-https://www.browserstack.com/guide/angular-vs-react-vs-vue
-https://medium.com/@learnwithakshay/react-vs-angular-vs-vue-js-what-to-choose-in-2024-87bf9ed38a80
-https://www.w3schools.com/react/react_intro.asp
-https://www.w3schools.com/vue/
-https://www.geeksforgeeks.org/angular-js/angular-tutorial/
+- https://www.browserstack.com/guide/angular-vs-react-vs-vue
+- https://medium.com/@learnwithakshay/react-vs-angular-vs-vue-js-what-to-choose-in-2024-87bf9ed38a80
+- https://www.w3schools.com/react/react_intro.asp
+- https://www.w3schools.com/vue/
+- https://www.geeksforgeeks.org/angular-js/angular-tutorial/
 
 --- 
 
