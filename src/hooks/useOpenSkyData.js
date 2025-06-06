@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 //Hur ofta det fetchas ny flygdata (15 * 1000 = 15 sekunder)
-const delay = 15;
+const delay = 10;
 
 
 export default function useOpenSkyData() {
@@ -20,7 +20,6 @@ export default function useOpenSkyData() {
       try {
         
           //Länken fetchar enbart flygdata från norden (lamin, lamax, lomin och lomax i url:en som väljer vilka geografiska värden flygdatan ska hämtas från)
-
       const response = await fetch('https://opensky-network.org/api/states/all?lamin=54.3&lamax=72&lomin=5&lomax=32');
       const result = await response.json();
         
@@ -33,6 +32,7 @@ export default function useOpenSkyData() {
         lon: index[5],
         velocity: index[9],
         altitude: index[7],
+        true_track: index[10],
       }));
 
         console.log('Flygdata hämtad: ', planeData);

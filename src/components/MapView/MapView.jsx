@@ -65,13 +65,14 @@ export default function MapView({setPlanesNearby}) {
 
         {planes.map((plane) => (
           <Marker
-            key={plane.id}
-            position={[plane.lat, plane.lon]}
-            icon={L.icon({
-              iconUrl: airplaneIcon,
+              key={plane.id}
+              position={[plane.lat, plane.lon]}
+              icon={L.divIcon({
+              html: `<img id="airplaneicon" src="${airplaneIcon}"style="transform: rotate(${plane.true_track - 50}deg);">,`,
               iconSize: [30, 30],
+              iconAnchor: [15, 15],
               className: 'airplane-icon'
-            })}
+        })}
           >
             <Popup>
               {plane.callsign}
