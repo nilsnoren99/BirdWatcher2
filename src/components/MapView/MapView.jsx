@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import './MapView.css';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import airplaneIcon from '../../assets/airplane.svg';
+import airplaneIcon from '../../assets/Airplane.svg';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import useOpenSkyData from '../../hooks/useOpenSkyData';
 import useUserLocation from '../../hooks/useUserLocation';
